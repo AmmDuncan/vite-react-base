@@ -14,7 +14,6 @@ export default defineConfig({
       exclude: [],
     }),
     svgrPlugin({
-      exportAsDefault: true,
       svgrOptions: {
         icon: true,
       },
