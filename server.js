@@ -1,7 +1,7 @@
-import compression from "compression";
-import express from "express";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
+import compression from 'compression';
+import express from 'express';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
 // eslint-disable-next-line no-undef
 const { PORT = 3000 } = process.env;
@@ -17,11 +17,11 @@ app.use(compression({ level: 9 }));
 app.use(express.json());
 
 // Serve app production bundle
-app.use(express.static("dist/app"));
+app.use(express.static('dist/app'));
 
 // Handle client routing, return all requests to the app
-app.get("*", (_req, res) => {
-  res.sendFile(join(__dirname, "dist/app/index.html"));
+app.get('*', (_req, res) => {
+  res.sendFile(join(__dirname, 'dist/app/index.html'));
 });
 
 app.listen(PORT, () => {
