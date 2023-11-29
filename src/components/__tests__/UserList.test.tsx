@@ -1,10 +1,12 @@
-import { ENV_VARS } from '@/utils/constants';
-import { HttpResponse, http } from 'msw';
-import { setupServer } from 'msw/node';
-import { UserList } from '../UserList';
 import { act, render, screen } from '@testing-library/react';
+import { http, HttpResponse } from 'msw';
+import { setupServer } from 'msw/node';
+
+import { ENV_VARS } from '@/utils/constants';
 import { resolveAsync } from '@/utils/helpers';
+
 import { Providers } from '..';
+import { UserList } from '../UserList';
 
 const server = setupServer(
   ...[

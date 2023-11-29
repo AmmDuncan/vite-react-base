@@ -10,13 +10,23 @@
   ],
   "ignorePatterns": ["dist", ".eslintrc.cjs"],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["react-refresh", "prettier"],
+  "plugins": ["react-refresh", "simple-import-sort", "prettier"],
   "rules": {
     "prettier/prettier": "error",
     "react-refresh/only-export-components": [
       "warn",
       { "allowConstantExport": true }
     ],
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    //if we want to group imports can use below.
+    "simple-import-sort/imports": ["error", {
+      "groups": [
+        ["^react"],
+        ["^antd"],
+        ["^@?\\w"],
+        ["@/(.*)"],
+        ["^[./]"]
+      ]
+    }]
   }
 }

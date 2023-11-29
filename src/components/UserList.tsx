@@ -1,7 +1,7 @@
 // TODO - delete file
+import { useQuery } from '@tanstack/react-query';
 
 import { useServices } from '@/hooks';
-import { useQuery } from '@tanstack/react-query';
 
 type DummyUser = {
   id: number;

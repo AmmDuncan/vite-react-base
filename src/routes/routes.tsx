@@ -1,5 +1,6 @@
-import { UserList } from '@/components/UserList';
 import { type RouteObject } from 'react-router-dom';
+
+import { UserList } from '@/components/UserList';
 
 export const routes: RouteObject[] = [
   {

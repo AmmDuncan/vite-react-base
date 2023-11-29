@@ -1,7 +1,7 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
-import { ENV_VARS } from '@/utils/constants';
 import { useAuthStore } from '@/stores';
+import { ENV_VARS } from '@/utils/constants';
 
 const instance = axios.create({
   baseURL: ENV_VARS.API_BASE_URL,

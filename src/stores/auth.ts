@@ -1,4 +1,4 @@
-import { StateCreator, create } from 'zustand';
+import { create, StateCreator } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import type { User } from '@/types/stores';
