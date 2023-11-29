@@ -1,5 +1,18 @@
 import { type Axios } from 'axios';
 
+export type ServiceOptions = {
+  method?: AxiosMethods;
+  url?: string;
+  path: string;
+  body?: any;
+  query?: Record<string, any>;
+  id?: string;
+};
+
+export type PartialServiceOptions = Partial<ServiceOptions>;
+
+export type AxiosMethods = 'get' | 'post' | 'patch' | 'put' | 'delete';
+
 export function getServiceCreator<T extends Axios>(api: T) {
   const defaultOptions: ServiceOptions = {
     method: 'get',
@@ -23,32 +36,6 @@ export function getServiceCreator<T extends Axios>(api: T) {
 function buildURL({ url, path, query }: Partial<ServiceOptions>) {
   return `${url}${path}?${query ? getQueryString(query) : ''}`;
 }
-
-// TODO: Move these type definitions to the types directory
-export type ServiceOptions = {
-  method?: AxiosMethods;
-  url?: string;
-  path: string;
-  body?: any;
-  query?: { [_: string]: any };
-  id?: string;
-};
-
-export type PartialServiceOptions = Partial<ServiceOptions>;
-
-export type CreateServiceOptions = Partial<ServiceOptions> &
-  Partial<{
-    id: any;
-    [p: string]: any;
-  }>;
-
-export type AxiosMethods = 'get' | 'post' | 'patch' | 'put' | 'delete';
-
-export type ServiceGetter = Record<
-  string,
-  (options: CreateServiceOptions) => Promise<any>
->;
-// END OF TODO
 
 function objectToQuery(obj: Record<string, any>) {
   if (!obj) throw Error('objectToQuery expects an object');
