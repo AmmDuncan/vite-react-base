@@ -14,7 +14,7 @@
     "start": "node server.js",
     "preview": "vite preview",
     "lint": "eslint --fix ./src",
-    "test:unit": "NODE_ENV=test vitest run --coverage --environment jsdom --reporter=default --reporter=hanging-process",
+    "test:unit": "NODE_ENV=test vitest run --coverage --changed --environment jsdom --reporter=default --reporter=hanging-process",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepare": "husky install"
