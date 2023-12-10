@@ -16,4 +16,9 @@
 - Add new icon names to `@/types/icon-names.ts` following the PascalCase convention.
 - After adding new icons, run the script to update icon names automatically:
   ```bash
-  npm run update-icons
+  yarn update-icons
+  ```
+  OR
+  ```bash
+  npm run update-icon
+  ```
