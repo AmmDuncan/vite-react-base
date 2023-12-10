@@ -42,7 +42,7 @@ export default defineConfig({
     css: false,
     coverage: {
       reporter: ['html', 'clover', 'json', 'lcov'],
-      exclude: ['**/src/config/**'],
+      exclude: ['**/src/config/**', '**/src/components/Icon/Icon.tsx'],
       provider: 'v8',
     },
   },

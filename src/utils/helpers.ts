@@ -11,3 +11,12 @@ export function getTarget(
     inputObj,
   );
 }
+
+export function toKebabCase(str: string) {
+  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+export function kebabToPascalCase(str: string): string {
+  return str
+    .replace(/-./g, (match) => match[1].toUpperCase())
+    .replace(/^[a-z]/, (match) => match.toUpperCase());
+}
