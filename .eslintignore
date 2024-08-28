@@ -1,5 +1,0 @@
-.eslintrc.js
-.husky
-node_modules
-coverage
-build

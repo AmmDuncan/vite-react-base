@@ -1,7 +1,6 @@
 import React from 'react';
 
-// import { ErrorBoundary } from 'react-error-boundary';
-import cx from 'classnames';
+import { cn } from '@/libs/cn';
 
 import { DeepReadonly } from '@/types';
 import { toKebabCase } from '@/utils/helpers';
@@ -21,7 +20,7 @@ export function Icon({ className, name, ...otherProps }: Props) {
   );
 
   return (
-    <span className={cx(className)} data-testid={`icon-${name}`}>
+    <span className={cn(className)} data-testid={`icon-${name}`}>
       {Icon ? <Icon {...otherProps} /> : null}
     </span>
   );

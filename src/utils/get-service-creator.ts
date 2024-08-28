@@ -13,6 +13,15 @@ export type PartialServiceOptions = Partial<ServiceOptions>;
 
 export type AxiosMethods = 'get' | 'post' | 'patch' | 'put' | 'delete';
 
+export type ServiceBuilderOptions = {
+  /**
+   * path to resource.
+   * if path contains dynamic value, replace it with `:id`
+   */
+  path: string;
+  method?: AxiosMethods;
+};
+
 export function getServiceCreator<T extends Axios>(api: T) {
   const defaultOptions: ServiceOptions = {
     method: 'get',
@@ -26,15 +35,44 @@ export function getServiceCreator<T extends Axios>(api: T) {
     const readyOptions = { ...defaultOptions, ...options };
     const { method, body } = readyOptions;
     const finalURL = buildURL(readyOptions);
-    return await api[method!.toLocaleLowerCase() as AxiosMethods]?.(
-      finalURL,
-      body,
-    );
+
+    if (method?.toLowerCase() === 'delete')
+      return api.delete(finalURL, {
+        data: body,
+      });
+
+    return api[method!.toLocaleLowerCase() as AxiosMethods]?.(finalURL, body);
+  };
+}
+
+/**
+ * A more abstract version of `getServiceCreator`. Should be preferred over when possible.
+ * Returns a function that can build a service based on the given API and configuration options.
+ *
+ * @param api - the Axios instance used for creating the service
+ * @return  a function that takes mainOptions and optional config and returns a function that takes options and creates a service
+ */
+export function getServiceBuilder(api: Axios) {
+  const createService = getServiceCreator(api);
+  // playing around with a more concise syntax
+  return (mainOptions: ServiceBuilderOptions) => {
+    const idPlaceholder = ':id';
+    const hasPlaceholder = mainOptions.path.includes(idPlaceholder);
+    if (hasPlaceholder)
+      return ({ id, ...options }: PartialServiceOptions) =>
+        createService({
+          ...options,
+          ...mainOptions,
+          path: mainOptions.path.replace(idPlaceholder, id!),
+        });
+
+    return (options: PartialServiceOptions) =>
+      createService({ ...options, ...mainOptions });
   };
 }
 
 function buildURL({ url, path, query }: Partial<ServiceOptions>) {
-  return `${url}${path}?${query ? getQueryString(query) : ''}`;
+  return `${url}${path}${query ? `?${getQueryString(query)}` : ''}`;
 }
 
 function objectToQuery(obj: Record<string, any>) {

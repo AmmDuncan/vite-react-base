@@ -16,7 +16,6 @@ function errorHandler(error: AxiosError) {
     window.location.pathname = '/auth/login';
   }
 
-  // eslint-disable-next-line no-throw-literal
   throw {
     status,
     ...(error?.response?.data || {

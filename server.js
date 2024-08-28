@@ -3,7 +3,7 @@ import express from 'express';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
-// eslint-disable-next-line no-undef
+ 
 const { PORT = 3000 } = process.env;
 
 const app = express();
