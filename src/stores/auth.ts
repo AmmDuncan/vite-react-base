@@ -44,7 +44,7 @@ const authStore: StateCreator<State & Actions> = (set, get) => ({
 });
 
 const useAuthStore = create(
-  persist(authStore, { name: 'carduvy-web-auth-store' }),
+  persist(authStore, { name: 'react-web-auth-store' }),
 );
 
 export { useAuthStore };

@@ -7,7 +7,7 @@ export const routes: RouteObject[] = [
     path: '/',
     element: (
       <div className="h-screen text-center">
-        <h1 className="py-6">Carduvy Frontend</h1>
+        <h1 className="py-6">Frontend</h1>
         <UserList />
       </div>
     ),
