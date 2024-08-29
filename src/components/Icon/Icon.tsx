@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { cn } from '@/libs/cn';
-
 import { DeepReadonly } from '@/types';
 import { toKebabCase } from '@/utils/helpers';
 

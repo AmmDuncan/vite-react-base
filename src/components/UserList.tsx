@@ -2,7 +2,6 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { useServices } from '@/hooks';
-
 type DummyUser = {
   id: number;
   name: string;
@@ -45,14 +44,14 @@ export function UserList() {
       {isLoading ? 'Loading...' : null}
 
       {data ? (
-        <div className="container px-8 mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+        <div className="container mx-auto px-8">
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <span className="self-center">Dummy API Call</span>
             {data?.map((obj) => (
               <div
                 data-testid="user-card"
                 key={obj.id}
-                className="border border-black/50 rounded  shadow-success shadow-[6px_6px_0_0] p-6"
+                className="rounded border border-black/50 p-6 shadow-[6px_6px_0_0] shadow-success"
               >
                 <div>{obj.username}</div>
                 {obj.name}

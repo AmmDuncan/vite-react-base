@@ -12,7 +12,7 @@ export default tseslint.config(
       ...tseslint.configs.recommended,
       eslintConfigPrettier,
     ],
-    files: ['./src/**/*.{js,jsx,ts,tsx}'],
+    files: ['src/**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       parser: typescript,
       parserOptions: {
